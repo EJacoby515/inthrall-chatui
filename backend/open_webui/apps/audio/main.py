@@ -46,6 +46,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from pydantic import BaseModel
 from open_webui.utils.utils import get_admin_user, get_verified_user
+from security import safe_requests
 
 # Constants
 MAX_FILE_SIZE_MB = 25
@@ -613,7 +614,7 @@ def get_available_models() -> list[dict]:
         }
 
         try:
-            response = requests.get(
+            response = safe_requests.get(
                 "https://api.elevenlabs.io/v1/models", headers=headers, timeout=5
             )
             response.raise_for_status()
@@ -655,7 +656,7 @@ def get_available_voices() -> dict:
             url = f"https://{region}.tts.speech.microsoft.com/cognitiveservices/voices/list"
             headers = {"Ocp-Apim-Subscription-Key": app.state.config.TTS_API_KEY}
 
-            response = requests.get(url, headers=headers)
+            response = safe_requests.get(url, headers=headers)
             response.raise_for_status()
             voices = response.json()
             for voice in voices:
@@ -683,7 +684,7 @@ def get_elevenlabs_voices() -> dict:
     }
     try:
         # TODO: Add retries
-        response = requests.get("https://api.elevenlabs.io/v1/voices", headers=headers)
+        response = safe_requests.get("https://api.elevenlabs.io/v1/voices", headers=headers)
         response.raise_for_status()
         voices_data = response.json()
 

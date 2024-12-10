@@ -147,6 +147,7 @@ from open_webui.utils.utils import (
     get_verified_user,
 )
 from open_webui.utils.access_control import has_access
+from security import safe_requests
 
 if SAFE_MODE:
     print("SAFE MODE ENABLED")
@@ -2418,7 +2419,7 @@ async def get_pipelines(urlIdx: Optional[int] = None, user=Depends(get_admin_use
         key = openai_app.state.config.OPENAI_API_KEYS[urlIdx]
 
         headers = {"Authorization": f"Bearer {key}"}
-        r = requests.get(f"{url}/pipelines", headers=headers)
+        r = safe_requests.get(f"{url}/pipelines", headers=headers)
 
         r.raise_for_status()
         data = r.json()
@@ -2455,7 +2456,7 @@ async def get_pipeline_valves(
         key = openai_app.state.config.OPENAI_API_KEYS[urlIdx]
 
         headers = {"Authorization": f"Bearer {key}"}
-        r = requests.get(f"{url}/{pipeline_id}/valves", headers=headers)
+        r = safe_requests.get(f"{url}/{pipeline_id}/valves", headers=headers)
 
         r.raise_for_status()
         data = r.json()
@@ -2493,7 +2494,7 @@ async def get_pipeline_valves_spec(
         key = openai_app.state.config.OPENAI_API_KEYS[urlIdx]
 
         headers = {"Authorization": f"Bearer {key}"}
-        r = requests.get(f"{url}/{pipeline_id}/valves/spec", headers=headers)
+        r = safe_requests.get(f"{url}/{pipeline_id}/valves/spec", headers=headers)
 
         r.raise_for_status()
         data = r.json()
