@@ -2226,6 +2226,40 @@
 			{initNewChat}
 		/>
 
+		<div class="absolute w-full top-[12vh] sm:top-[15vh] md:top-[18vh] lg:top-[20vh] flex flex-wrap justify-center gap-4 p-4 z-50
+">
+    <button 
+        class="p-6 bg-gray-800 rounded-lg text-white hover:bg-gray-700 shadow-lg transition-all 
+        w-36 sm:w-40 md:w-44 lg:w-48 
+        h-24 sm:h-28 md:h-32 
+        flex flex-col items-center justify-center"
+				on:click={() => {
+					submitPrompt("Predefined prompt 1");
+				}}
+			>
+				<span class="text-base sm:text-lg font-bold">Card 1</span>
+				<span class="text-xs sm:text-sm text-gray-300">Description</span>
+			</button>
+			<button 
+				class="p-6 bg-gray-800 rounded-lg text-white hover:bg-gray-700 shadow-lg transition-all w-48 h-32 flex flex-col items-center justify-center"
+			>
+				<span class="text-base sm:text-lg font-bold">Card 2</span>
+				<span class="text-xs sm:text-sm text-gray-300">Description</span>
+			</button>
+			<button 
+				class="p-6 bg-gray-800 rounded-lg text-white hover:bg-gray-700 shadow-lg transition-all w-48 h-32 flex flex-col items-center justify-center"
+			>
+				<span class="text-base sm:text-lg font-bold">Card 3</span>
+				<span class="text-xs sm:text-sm text-gray-300">Description</span>
+			</button>
+			<button 
+				class="p-6 bg-gray-800 rounded-lg text-white hover:bg-gray-700 shadow-lg transition-all w-48 h-32 flex flex-col items-center justify-center"
+			>
+				<span class="text-base sm:text-lg font-bold">Card 4</span>
+				<span class="text-xs sm:text-sm text-gray-300">Description</span>
+			</button>
+		</div>
+
 		<PaneGroup direction="horizontal" class="w-full h-full">
 			<Pane defaultSize={50} class="h-full flex w-full relative">
 				{#if $banners.length > 0 && !history.currentId && !$chatId && selectedModels.length <= 1}
