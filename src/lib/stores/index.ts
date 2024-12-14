@@ -107,6 +107,15 @@ type OllamaModelDetails = {
 };
 
 type Settings = {
+	memory: boolean;
+	userLocation: any;
+	params: any;
+	hapticFeedback: boolean;
+	responseAutoCopy: boolean;
+	autoTags: boolean;
+	splitLargeChunks(body: ReadableStream<Uint8Array>, splitLargeChunks: any): unknown;
+	landingPageMode: string;
+	richTextInput: boolean;
 	models?: string[];
 	conversationMode?: boolean;
 	speechAutoSend?: boolean;

@@ -80,13 +80,14 @@
 	import EventConfirmDialog from '../common/ConfirmDialog.svelte';
 	import Placeholder from './Placeholder.svelte';
 	import { getTools } from '$lib/apis/tools';
+	
 
 	export let chatIdProp = '';
 
 	let loaded = false;
 	const eventTarget = new EventTarget();
-	let controlPane;
-	let controlPaneComponent;
+	let controlPane: { collapse: () => void; };
+	let controlPaneComponent: ChatControls;
 
 	let stopResponseFlag = false;
 	let autoScroll = true;
@@ -110,7 +111,7 @@
 	let selectedModelIds = [];
 	$: selectedModelIds = atSelectedModel !== undefined ? [atSelectedModel.id] : selectedModels;
 
-	let selectedToolIds = [];
+	let selectedToolIds: string | any[] | undefined = [];
 	let webSearchEnabled = false;
 
 	let chat = null;
@@ -120,11 +121,12 @@
 		messages: {},
 		currentId: null
 	};
+	let mailLink: HTMLAnchorElement;
 
 	// Chat Input
 	let prompt = '';
-	let chatFiles = [];
-	let files = [];
+	let chatFiles: any[] = [];
+	let files: any[] = [];
 	let params = {};
 
 	$: if (chatIdProp) {
@@ -2206,7 +2208,7 @@
 				class="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-white/30 to-white/80 dark:from-gray-900/30 dark:to-[#171717]/30 z-0"
 			/>
 		{/if}
-
+		
 		<Navbar
 			bind:this={navbarElement}
 			chat={{
@@ -2226,39 +2228,81 @@
 			{initNewChat}
 		/>
 
-		<div class="absolute w-full top-[12vh] sm:top-[15vh] md:top-[18vh] lg:top-[20vh] flex flex-wrap justify-center gap-4 p-4 z-50
+		<div class="absolute w-full top-[6vh] sm:top-[8vh] md:top-[12vh] lg:top-[16vh] flex flex-wrap justify-center gap-4 p-4 z-50
 ">
     <button 
-        class="p-6 bg-gray-800 rounded-lg text-white hover:bg-gray-700 shadow-lg transition-all 
+        class="p-6 rounded-lg text-white hover:opacity-90 shadow-lg transition-all 
         w-36 sm:w-40 md:w-44 lg:w-48 
-        h-24 sm:h-28 md:h-32 
-        flex flex-col items-center justify-center"
-				on:click={() => {
-					submitPrompt("Predefined prompt 1");
-				}}
+        h-24 sm:h-28 md:h-40 
+        flex flex-col items-center justify-center
+		bg-cover bg-center bg-no-repeat relative overflow-hidden"
+		style="background-image: url('../../../../src/static/ar_map.png');"
+				on:click={() =>
+					goto ("/screens")
+				}
 			>
-				<span class="text-base sm:text-lg font-bold">Card 1</span>
+				<span class="text-base sm:text-lg font-bold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">Enter my ThrallDoor</span>
+				<span class="text-xs sm:text-sm text-gray-300"></span>
+			</button>
+			<button 
+				class="p-6 bg-gray-800 rounded-lg text-white hover:opacity-90 shadow-lg 
+				transition-all w-48 h-40 
+				flex flex-col items-center justify-center
+				bg-cover bg-center bg-no-repeat relative overflow-hidden"
+				style="background-image: url('../../../../src/static/ar_u_hear.jpg');"
+			>
+				<span class="text-base sm:text-lg font-bold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)">Card 2</span>
 				<span class="text-xs sm:text-sm text-gray-300">Description</span>
 			</button>
 			<button 
-				class="p-6 bg-gray-800 rounded-lg text-white hover:bg-gray-700 shadow-lg transition-all w-48 h-32 flex flex-col items-center justify-center"
+				class="p-6 bg-gray-800 rounded-lg text-white hover:opacity-90 shadow-lg 
+				transition-all w-48 h-40 
+				flex flex-col items-center justify-center
+				bg-cover bg-center bg-no-repeat relative overflow-hidden"
+				style="background-image: url('../../../../src/static/ar_helloholo.jpg');"
 			>
-				<span class="text-base sm:text-lg font-bold">Card 2</span>
+				<span class="text-base sm:text-lg font-bold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)">Card 3</span>
 				<span class="text-xs sm:text-sm text-gray-300">Description</span>
 			</button>
 			<button 
-				class="p-6 bg-gray-800 rounded-lg text-white hover:bg-gray-700 shadow-lg transition-all w-48 h-32 flex flex-col items-center justify-center"
+				class="p-6 bg-gray-800 rounded-lg text-white hover:opacity-90 shadow-lg 
+				transition-all w-48 h-40 
+				flex flex-col items-center justify-center
+				bg-cover bg-center bg-no-repeat relative overflow-hidden"
+				style="background-image: url('../../../../src/static/ar_make_me_holo.jpg');"
 			>
-				<span class="text-base sm:text-lg font-bold">Card 3</span>
+				<span class="text-base sm:text-lg font-bold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)">Card 4</span>
 				<span class="text-xs sm:text-sm text-gray-300">Description</span>
+			
 			</button>
-			<button 
-				class="p-6 bg-gray-800 rounded-lg text-white hover:bg-gray-700 shadow-lg transition-all w-48 h-32 flex flex-col items-center justify-center"
-			>
-				<span class="text-base sm:text-lg font-bold">Card 4</span>
-				<span class="text-xs sm:text-sm text-gray-300">Description</span>
-			</button>
+			<div class="fixed bottom-24 left-0 right-0 flex flex-wrap justify-center gap-2 px-4 z-10">
+				<button class="px-3 py-1.5 bg-gray-800 rounded-lg text-white hover:bg-gray-700 transition-all text-sm">
+					YouTube Info
+				</button>
+				<button 
+    class="px-3 py-1.5 bg-gray-800/90 rounded-lg text-white hover:bg-gray-700 transition-all text-sm"
+    on:click={() => {
+        const email = 'harry.hart@inthrall.me';
+        const subject = 'Thrall Door Inquiry';
+        const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}`;
+        document.location.href = mailtoLink;
+    }}
+>
+    Contact Me
+</button>
+				<button class="px-3 py-1.5 bg-gray-800 rounded-lg text-white hover:bg-gray-700 transition-all text-sm">
+					ThrallAR
+				</button>
+				<button class="px-3 py-1.5 bg-gray-800 rounded-lg text-white hover:bg-gray-700 transition-all text-sm">
+					Call Me Real-Time
+				</button>
+				<button class="px-3 py-1.5 bg-gray-800 rounded-lg text-white hover:bg-gray-700 transition-all text-sm">
+					Meet My Hologram
+				</button>
+				
+			</div>
 		</div>
+		
 
 		<PaneGroup direction="horizontal" class="w-full h-full">
 			<Pane defaultSize={50} class="h-full flex w-full relative">
@@ -2299,6 +2343,7 @@
 									messagesContainerElement.clientHeight + 5;
 							}}
 						>
+						
 							<div class=" h-full w-full flex flex-col">
 								<Messages
 									chatId={$chatId}
@@ -2316,7 +2361,10 @@
 									bottomPadding={files.length > 0}
 								/>
 							</div>
-						</div>
+							
+
+							
+						
 
 						<div class=" pb-[1rem]">
 							<MessageInput
@@ -2357,7 +2405,10 @@
 							>
 								<!-- {$i18n.t('LLMs can make mistakes. Verify important information.')} -->
 							</div>
+							
 						</div>
+						</div>
+						
 					{:else}
 						<div class="overflow-auto w-full h-full flex items-center">
 							<Placeholder
