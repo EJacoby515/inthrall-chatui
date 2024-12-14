@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\lib",
+    "\\src\\lib\\components",
+    "\\src\\lib\\components\\chat",
+    "\\src\\lib\\components\\chat\\Settings"
+  ],
+  "SelectedNode": "\\src\\lib\\components\\chat\\Chat.svelte",
+  "PreviewInSolutionExplorer": false
+}

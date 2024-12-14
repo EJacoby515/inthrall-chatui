@@ -2229,6 +2229,8 @@
 		/>
 
 		<div class="absolute w-full top-[4vh] sm:top-[6vh] md:top-[8vh] lg:top-[12vh] flex flex-wrap justify-center gap-4 p-4 z-50">
+
+    <!-- Toggle This Card-->
     <button 
         class="p-6 rounded-lg text-white hover:opacity-90 shadow-lg transition-all 
         w-28 sm:w-30 md:w-36 lg:w-40 
@@ -2243,7 +2245,9 @@
 				<span class="text-base sm:text-lg font-bold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">Enter My ThrallDoor.360°</span>
 				<span class="text-xs sm:text-sm text-gray-300"></span>
 			</button>
-			<button 
+
+      <!-- Toggle This Card-->
+      <button 
 				class="p-6 bg-gray-800 rounded-lg text-white hover:opacity-90 shadow-lg 
 				transition-all w-48 h-40 
 				flex flex-col items-center justify-center
@@ -2253,7 +2257,9 @@
 				<span class="text-base sm:text-lg font-bold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)">Card 2</span>
 				<span class="text-xs sm:text-sm text-gray-300">Description</span>
 			</button>
-			<button 
+      
+      <!-- Toggle This Card-->
+      <button 
 				class="p-6 bg-gray-800 rounded-lg text-white hover:opacity-90 shadow-lg 
 				transition-all w-48 h-40 
 				flex flex-col items-center justify-center
@@ -2263,7 +2269,8 @@
 				<span class="text-base sm:text-lg font-bold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)">Card 3</span>
 				<span class="text-xs sm:text-sm text-gray-300">Description</span>
 			</button>
-      <!-- how to toggle individual cards-->
+      
+      <!-- Toggle This Card-->
       <!--
 			<button 
 				class="p-6 bg-gray-800 rounded-lg text-white hover:opacity-90 shadow-lg 
