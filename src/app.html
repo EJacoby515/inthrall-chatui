@@ -11,11 +11,11 @@
 		/>
 		<meta name="theme-color" content="#171717" />
 		<meta name="robots" content="noindex,nofollow" />
-		<meta name="description" content="Open WebUI" />
+		<meta name="description" content="ThrallPortal" />
 		<link
 			rel="search"
 			type="application/opensearchdescription+xml"
-			title="Open WebUI"
+			title="ThrallPortal"
 			href="/opensearch.xml"
 		/>
 
@@ -32,7 +32,7 @@
 				const prefersDarkTheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
 				if (!localStorage?.theme) {
-					localStorage.theme = 'her';
+					localStorage.theme = blue-earth;
 				}
 
 				if (localStorage.theme === 'system') {
@@ -48,9 +48,9 @@
 				} else if (localStorage.theme === 'light') {
 					document.documentElement.classList.add('light');
 					metaThemeColorTag.setAttribute('content', '#ffffff');
-				} else if (localStorage.theme === 'her') {
+				} else if (localStorage.theme === blue-earth) {
 					document.documentElement.classList.add('dark');
-					document.documentElement.classList.add('her');
+					document.documentElement.classList.add(blue-earth);
 					metaThemeColorTag.setAttribute('content', '#983724');
 				} else {
 					document.documentElement.classList.add('dark');
@@ -73,7 +73,7 @@
 			})();
 		</script>
 
-		<title>Open WebUI</title>
+		<title>ThrallPortal</title>
 
 		%sveltekit.head%
 	</head>

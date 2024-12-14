@@ -2228,20 +2228,19 @@
 			{initNewChat}
 		/>
 
-		<div class="absolute w-full top-[6vh] sm:top-[8vh] md:top-[12vh] lg:top-[16vh] flex flex-wrap justify-center gap-4 p-4 z-50
-">
+		<div class="absolute w-full top-[4vh] sm:top-[6vh] md:top-[8vh] lg:top-[12vh] flex flex-wrap justify-center gap-4 p-4 z-50">
     <button 
         class="p-6 rounded-lg text-white hover:opacity-90 shadow-lg transition-all 
-        w-36 sm:w-40 md:w-44 lg:w-48 
-        h-24 sm:h-28 md:h-40 
+        w-28 sm:w-30 md:w-36 lg:w-40 
+        h-28 sm:h-30 md:h-36 lg:h-40
         flex flex-col items-center justify-center
 		bg-cover bg-center bg-no-repeat relative overflow-hidden"
-		style="background-image: url('../../../../src/static/ar_map.png');"
+		style="background-image: url('/static/ar_map.png');"
 				on:click={() =>
 					goto ("/screens")
 				}
 			>
-				<span class="text-base sm:text-lg font-bold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">Enter my ThrallDoor</span>
+				<span class="text-base sm:text-lg font-bold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">Enter My ThrallDoor.360°</span>
 				<span class="text-xs sm:text-sm text-gray-300"></span>
 			</button>
 			<button 
@@ -2249,7 +2248,7 @@
 				transition-all w-48 h-40 
 				flex flex-col items-center justify-center
 				bg-cover bg-center bg-no-repeat relative overflow-hidden"
-				style="background-image: url('../../../../src/static/ar_u_hear.jpg');"
+				style="background-image: url('/static/ar_u_hear.jpg');"
 			>
 				<span class="text-base sm:text-lg font-bold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)">Card 2</span>
 				<span class="text-xs sm:text-sm text-gray-300">Description</span>
@@ -2259,22 +2258,25 @@
 				transition-all w-48 h-40 
 				flex flex-col items-center justify-center
 				bg-cover bg-center bg-no-repeat relative overflow-hidden"
-				style="background-image: url('../../../../src/static/ar_helloholo.jpg');"
+				style="background-image: url('/static/ar_helloholo.jpg');"
 			>
 				<span class="text-base sm:text-lg font-bold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)">Card 3</span>
 				<span class="text-xs sm:text-sm text-gray-300">Description</span>
 			</button>
+      <!-- how to toggle individual cards-->
+      <!--
 			<button 
 				class="p-6 bg-gray-800 rounded-lg text-white hover:opacity-90 shadow-lg 
 				transition-all w-48 h-40 
 				flex flex-col items-center justify-center
 				bg-cover bg-center bg-no-repeat relative overflow-hidden"
-				style="background-image: url('../../../../src/static/ar_make_me_holo.jpg');"
+				style="background-image: url('static/ar_make_me_holo.jpg');"
 			>
 				<span class="text-base sm:text-lg font-bold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)">Card 4</span>
 				<span class="text-xs sm:text-sm text-gray-300">Description</span>
 			
 			</button>
+      -->
 			<div class="fixed bottom-24 left-0 right-0 flex flex-wrap justify-center gap-2 px-4 z-10">
 				<button class="px-3 py-1.5 bg-gray-800 rounded-lg text-white hover:bg-gray-700 transition-all text-sm">
 					YouTube Info
@@ -2283,7 +2285,7 @@
     class="px-3 py-1.5 bg-gray-800/90 rounded-lg text-white hover:bg-gray-700 transition-all text-sm"
     on:click={() => {
         const email = 'harry.hart@inthrall.me';
-        const subject = 'Thrall Door Inquiry';
+        const subject = 'ThrallPortal Inquiry';
         const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}`;
         document.location.href = mailtoLink;
     }}

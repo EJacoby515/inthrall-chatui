@@ -165,7 +165,7 @@
 		await tick();
 
 		if (
-			document.documentElement.classList.contains('her') &&
+			document.documentElement.classList.contains(blue-earth) &&
 			document.getElementById('progress-bar')
 		) {
 			loadingProgress.subscribe((value) => {
