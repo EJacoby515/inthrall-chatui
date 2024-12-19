@@ -2,9 +2,9 @@
     import { goto } from '$app/navigation';
 </script>
 
-<div class="min-h-screen bg-gray-900 text-white">
+<div class="w-full">  <!-- Changed from min-h-screen -->
     <!-- Hero Section -->
-    <div class="relative h-[60vh] bg-cover bg-center" 
+    <div class="relative h-[100vh] bg-cover bg-center" 
          style="background-image: url('/portal-background.jpg')">
         <div class="absolute inset-0 bg-black/50"></div>
         <div class="relative z-10 h-full flex flex-col items-center justify-center px-4">
@@ -74,3 +74,7 @@
         </div>
     </div>
 </div>
+
+<style>
+    /* Add if you need any page-specific styles */
+</style>

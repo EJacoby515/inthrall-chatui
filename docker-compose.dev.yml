@@ -1,0 +1,45 @@
+services:
+  ollama:
+    image: ollama/ollama
+    ports:
+      - "11434:11434"
+
+  webui:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "8080:8080"  # Backend port
+      - "5173:5173"  # Frontend dev server port
+    environment:
+      - OLLAMA_API_BASE_URL=http://ollama:11434
+      - PORT=8080
+      - HOST=0.0.0.0
+      - WEBUI_SECRET_KEY=development_secret_key
+      - WEBUI_JWT_SECRET_KEY=development_jwt_secret
+      - ENV=dev
+      - GLOBAL_LOG_LEVEL=debug
+      - CORS_ALLOW_ORIGIN=["http://localhost:5173"]
+      - CORS_ALLOW_CREDENTIALS=true
+      - WEBUI_URL=http://localhost:5173
+    networks:
+      - app-network
+    volumes:
+      - ./:/open-webui
+      - open-webui:/open-webui/backend/data
+    command: >
+      sh -c "cd /open-webui/backend && 
+             pip install -r requirements.txt &&
+             python -m uvicorn open_webui.main:app --host 0.0.0.0 --port 8080 --reload &
+             cd /open-webui &&
+             npm install &&
+             npm run dev -- --host 0.0.0.0"
+    depends_on:
+      - ollama
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  open-webui:
