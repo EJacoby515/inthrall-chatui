@@ -37,7 +37,7 @@ export const functions = writable(null);
 export const banners: Writable<Banner[]> = writable([]);
 
 export const settings: Writable<Settings> = writable({
-	backgroundURL: './static/earth-spinning.gif',
+	backgroundURL: 'backend/open_webui/static/earth_spinning.gif',
 	chatDirection: 'LTR'
 });
 

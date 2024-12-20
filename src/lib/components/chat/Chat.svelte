@@ -2233,7 +2233,7 @@
 	>
 		<button
 			class="flex-none p-6 rounded-lg text-white hover:opacity-90 shadow-lg transition-all w-40 sm:w-48 h-28 sm:h-32 bg-cover bg-center relative overflow-hidden"
-			style="background-image: url('../../../../src/static/ar_map.png');"
+			style="background-image: url('../../../../backend/open_webui/static/ar_map.png');"
 			on:click={() => goto('/screens')}
 		>
 			<span class="text-base sm:text-lg font-bold drop-shadow-md">
@@ -2243,21 +2243,21 @@
 
 		<button
 			class="flex-none p-6 rounded-lg text-white hover:opacity-90 shadow-lg transition-all w-40 sm:w-48 h-28 sm:h-32 bg-cover bg-center relative overflow-hidden"
-			style="background-image: url('../../../../src/static/ar_u_hear.jpg');"
+			style="background-image: url('../../../../backend/open_webui/static/ar_u_hear.jpg');"
 		>
 			<span class="text-base sm:text-lg font-bold drop-shadow-md">Card 2</span>
 		</button>
 
 		<button
 			class="flex-none p-6 rounded-lg text-white hover:opacity-90 shadow-lg transition-all w-40 sm:w-48 h-28 sm:h-32 bg-cover bg-center relative overflow-hidden"
-			style="background-image: url('../../../../src/static/ar_helloholo.jpg');"
+			style="background-image: url('../../../../backend/open_webui/static/ar_helloholo.jpg');"
 		>
 			<span class="text-base sm:text-lg font-bold drop-shadow-md">Card 3</span>
 		</button>
 
 		<!-- <button
 			class="flex-none p-6 rounded-lg text-white hover:opacity-90 shadow-lg transition-all w-40 sm:w-48 h-28 sm:h-32 bg-cover bg-center relative overflow-hidden"
-			style="background-image: url('../../../../src/static/ar_make_me_holo.jpg');"
+			style="background-image: url('../../../../backend/open_webui/static/ar_make_me_holo.jpg');"
 		>
 			<span class="text-base sm:text-lg font-bold drop-shadow-md">Card 4</span>
 		</button> -->
