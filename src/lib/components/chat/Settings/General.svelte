@@ -132,7 +132,7 @@
 						? '#171717'
 						: _theme === 'oled-dark'
 							? '#000000'
-							: _theme === blue-earth
+							: _theme === "blue-earth"
 								? '#983724'
 								: '#ffffff'
 				);

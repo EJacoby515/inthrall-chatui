@@ -2228,53 +2228,39 @@
 			{initNewChat}
 		/>
 
-		<div class="absolute w-full top-[6vh] sm:top-[8vh] md:top-[12vh] lg:top-[16vh] flex flex-wrap justify-center gap-4 p-4 z-50
-">
-    <button 
-        class="p-6 rounded-lg text-white hover:opacity-90 shadow-lg transition-all 
-        w-36 sm:w-40 md:w-44 lg:w-48 
-        h-24 sm:h-28 md:h-40 
-        flex flex-col items-center justify-center
-		bg-cover bg-center bg-no-repeat relative overflow-hidden"
-		style="background-image: url('../../../../src/static/ar_map.png');"
-				on:click={() =>
-					goto ("/screens")
-				}
-			>
-				<span class="text-base sm:text-lg font-bold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">Enter my ThrallDoor</span>
-				<span class="text-xs sm:text-sm text-gray-300"></span>
-			</button>
-			<button 
-				class="p-6 bg-gray-800 rounded-lg text-white hover:opacity-90 shadow-lg 
-				transition-all w-48 h-40 
-				flex flex-col items-center justify-center
-				bg-cover bg-center bg-no-repeat relative overflow-hidden"
-				style="background-image: url('../../../../src/static/ar_u_hear.jpg');"
-			>
-				<span class="text-base sm:text-lg font-bold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)">Card 2</span>
-				<span class="text-xs sm:text-sm text-gray-300">Description</span>
-			</button>
-			<button 
-				class="p-6 bg-gray-800 rounded-lg text-white hover:opacity-90 shadow-lg 
-				transition-all w-48 h-40 
-				flex flex-col items-center justify-center
-				bg-cover bg-center bg-no-repeat relative overflow-hidden"
-				style="background-image: url('../../../../src/static/ar_helloholo.jpg');"
-			>
-				<span class="text-base sm:text-lg font-bold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)">Card 3</span>
-				<span class="text-xs sm:text-sm text-gray-300">Description</span>
-			</button>
-			<button 
-				class="p-6 bg-gray-800 rounded-lg text-white hover:opacity-90 shadow-lg 
-				transition-all w-48 h-40 
-				flex flex-col items-center justify-center
-				bg-cover bg-center bg-no-repeat relative overflow-hidden"
-				style="background-image: url('../../../../src/static/ar_make_me_holo.jpg');"
-			>
-				<span class="text-base sm:text-lg font-bold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)">Card 4</span>
-				<span class="text-xs sm:text-sm text-gray-300">Description</span>
-			
-			</button>
+		<div
+		class="w-full flex overflow-x-auto whitespace-nowrap gap-4 px-4 py-2 flex-row justify-center items-center mt-40 -mb-40 z-20"
+	>
+		<button
+			class="flex-none p-6 rounded-lg text-white hover:opacity-90 shadow-lg transition-all w-40 sm:w-48 h-28 sm:h-32 bg-cover bg-center relative overflow-hidden"
+			style="background-image: url('../../../../src/static/ar_map.png');"
+			on:click={() => goto('/screens')}
+		>
+			<span class="text-base sm:text-lg font-bold drop-shadow-md">
+				Enter my ThrallDoor
+			</span>
+		</button>
+
+		<button
+			class="flex-none p-6 rounded-lg text-white hover:opacity-90 shadow-lg transition-all w-40 sm:w-48 h-28 sm:h-32 bg-cover bg-center relative overflow-hidden"
+			style="background-image: url('../../../../src/static/ar_u_hear.jpg');"
+		>
+			<span class="text-base sm:text-lg font-bold drop-shadow-md">Card 2</span>
+		</button>
+
+		<button
+			class="flex-none p-6 rounded-lg text-white hover:opacity-90 shadow-lg transition-all w-40 sm:w-48 h-28 sm:h-32 bg-cover bg-center relative overflow-hidden"
+			style="background-image: url('../../../../src/static/ar_helloholo.jpg');"
+		>
+			<span class="text-base sm:text-lg font-bold drop-shadow-md">Card 3</span>
+		</button>
+
+		<!-- <button
+			class="flex-none p-6 rounded-lg text-white hover:opacity-90 shadow-lg transition-all w-40 sm:w-48 h-28 sm:h-32 bg-cover bg-center relative overflow-hidden"
+			style="background-image: url('../../../../src/static/ar_make_me_holo.jpg');"
+		>
+			<span class="text-base sm:text-lg font-bold drop-shadow-md">Card 4</span>
+		</button> -->
 			<div class="fixed bottom-24 left-0 right-0 flex flex-wrap justify-center gap-2 px-4 z-10">
 				<button class="px-3 py-1.5 bg-gray-800 rounded-lg text-white hover:bg-gray-700 transition-all text-sm">
 					YouTube Info
@@ -2334,7 +2320,7 @@
 				<div class="flex flex-col flex-auto z-10 w-full">
 					{#if $settings?.landingPageMode === 'chat' || createMessagesList(history.currentId).length > 0}
 						<div
-							class=" pb-2.5 flex flex-col justify-between w-full flex-auto overflow-auto  max-w-full z-10 scrollbar-hidden mt-[-100]"
+							class="pb-2.5 flex flex-col justify-between w-full flex-auto overflow-auto max-w-full z-10 scrollbar-hidden mt-[80px]"
 							id="messages-container"
 							bind:this={messagesContainerElement}
 							on:scroll={(e) => {
@@ -2366,7 +2352,7 @@
 							
 						
 
-						<div class=" pb-[1rem] z-30 relative">
+						<div class=" pb-[1rem] z-30 relative mt-auto">
 							<MessageInput
 								{history}
 								{selectedModels}
