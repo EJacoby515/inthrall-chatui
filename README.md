@@ -142,7 +142,7 @@ This installation method uses a single container image that bundles Open WebUI w
 
 Both commands facilitate a built-in, hassle-free installation of both Open WebUI and Ollama, ensuring that you can get everything up and running swiftly.
 
-After installation, you can access Open WebUI at [http://localhost:3000](http://localhost:3000). Enjoy! 😄
+After installation, you can access Open WebUI at [http://localhost:3004](http://localhost:3004). Enjoy! 😄
 
 ### Other Installation Methods
 

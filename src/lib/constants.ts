@@ -5,7 +5,7 @@ const APP_VERSION = '0.4.8';
 // @ts-ignore
 const APP_BUILD_HASH = 'dev-build';
 
-export const APP_NAME = 'Open WebUI';
+export const APP_NAME = 'ThrallPortal';
 
 // Use localhost for development
 export const WEBUI_HOSTNAME = browser ? (dev ? 'localhost:5173' : '') : '';

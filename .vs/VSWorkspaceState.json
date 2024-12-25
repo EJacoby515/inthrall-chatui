@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\backend",
+    "\\backend\\open_webui",
+    "\\src",
+    "\\src\\lib",
+    "\\src\\lib\\components",
+    "\\src\\lib\\components\\chat",
+    "\\src\\routes"
+  ],
+  "SelectedNode": "\\src\\lib\\components\\chat\\Chat.svelte",
+  "PreviewInSolutionExplorer": false
+}

@@ -15,7 +15,7 @@
     <nav class="w-full bg-gray-900/90 backdrop-blur-sm border-b border-gray-800">
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex items-center justify-between h-16">
-                <a href="/screens" class="text-2xl font-bold text-white">ThrallDoor</a>
+                <a href="/screens" class="text-2xl font-bold text-white">ThrallDoor.360&deg;</a>
 
                 <div class="hidden md:flex items-center space-x-4">
                     {#each navItems as item}
@@ -53,7 +53,7 @@
     <footer class="bg-gray-800/50 border-t border-gray-800">
         <div class="max-w-7xl mx-auto py-6 px-4">
             <p class="text-center text-gray-400">
-                © {new Date().getFullYear()} ThrallDoor. All rights reserved.
+                © {new Date().getFullYear()} inThrall Global Corporation. All rights reserved.
             </p>
         </div>
     </footer>

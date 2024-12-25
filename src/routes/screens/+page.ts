@@ -2,6 +2,6 @@ export const prerender = true;
 
 export function load() {
     return {
-        title: 'ThrallDoor - Where In The World?'
+        title: 'ThrallDoor.360&deg; - Where In The World?'
     };
 }

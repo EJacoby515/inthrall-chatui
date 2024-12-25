@@ -81,31 +81,16 @@
 	<body data-sveltekit-preload-data="hover">
 		<div style="display: contents">%sveltekit.body%</div>
 
-		<div
-			id="splash-screen"
-			style="position: fixed; z-index: 100; top: 0; left: 0; width: 100%; height: 100%"
-		>
+		<div id="splash-screen"
+			 style="position: fixed; z-index: 100; top: 0; left: 0; width: 100%; height: 100%">
 			<style type="text/css" nonce="">
 				html {
 					overflow-y: scroll !important;
 				}
 			</style>
 
-			<img
-				id="logo"
-				style="
-					position: absolute;
-					width: auto;
-					height: 6rem;
-					top: 44%;
-					left: 50%;
-					transform: translateX(-50%);
-				"
-				src="/static/splash.png"
-			/>
 
-			<div
-				style="
+			<div style="
 					position: absolute;
 					top: 33%;
 					left: 50%;
@@ -116,45 +101,56 @@
 					display: flex;
 					flex-direction: column;
 					align-items: center;
-				"
-			>
-				<img
-					id="logo-her"
-					style="width: auto; height: 13rem"
-					src="/static/splash.png"
-					class="animate-pulse-fast"
-				/>
+				">
+				<video id="logo"
+					   class="centered-video"
+					   width="800"
+					   height="450"
+					   autoplay
+					   loop
+					   muted>
+					<source src="/static/splash.mp4" type="video/mp4">
+					Your browser does not support the video tag.
+				</video>
+
+				<style>
+					.centered-video {
+						position: absolute;
+						width: auto;
+						height: 6rem;
+						top: 44%;
+						left: 50%;
+						transform: translate(-50%, -50%);
+					}
+				</style>
+
 
 				<div style="position: relative; width: 24rem; margin-top: 0.5rem">
-					<div
-						id="progress-background"
-						style="
+					<div id="progress-background"
+						 style="
 							position: absolute;
 							width: 100%;
 							height: 0.75rem;
 
 							border-radius: 9999px;
 							background-color: #fafafa9a;
-						"
-					></div>
+						"></div>
 
-					<div
-						id="progress-bar"
-						style="
+					<div id="progress-bar"
+						 style="
 							position: absolute;
 							width: 0%;
 							height: 0.75rem;
 							border-radius: 9999px;
 							background-color: #fff;
 						"
-						class="bg-white"
-					></div>
+						 class="bg-white"></div>
 				</div>
 			</div>
 
 			<!-- <span style="position: absolute; bottom: 32px; left: 50%; margin: -36px 0 0 -36px">
-				Footer content
-			</span> -->
+		Footer content
+	</span> -->
 		</div>
 	</body>
 </html>
