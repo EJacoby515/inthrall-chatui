@@ -865,7 +865,7 @@ def filter_pipeline(payload, user, models):
                     "user": user,
                     "body": payload,
                 },
-            )
+            timeout=60)
 
             r.raise_for_status()
             payload = r.json()
@@ -1421,7 +1421,7 @@ async def chat_completed(form_data: dict, user=Depends(get_verified_user)):
                         },
                         "body": data,
                     },
-                )
+                timeout=60)
 
                 r.raise_for_status()
                 data = r.json()
@@ -2295,7 +2295,7 @@ async def upload_pipeline(
 
         with open(file_path, "rb") as f:
             files = {"file": f}
-            r = requests.post(f"{url}/pipelines/upload", headers=headers, files=files)
+            r = requests.post(f"{url}/pipelines/upload", headers=headers, files=files, timeout=60)
 
         r.raise_for_status()
         data = r.json()
@@ -2342,8 +2342,8 @@ async def add_pipeline(form_data: AddPipelineForm, user=Depends(get_admin_user))
 
         headers = {"Authorization": f"Bearer {key}"}
         r = requests.post(
-            f"{url}/pipelines/add", headers=headers, json={"url": form_data.url}
-        )
+            f"{url}/pipelines/add", headers=headers, json={"url": form_data.url}, 
+        timeout=60)
 
         r.raise_for_status()
         data = r.json()
@@ -2384,8 +2384,8 @@ async def delete_pipeline(form_data: DeletePipelineForm, user=Depends(get_admin_
 
         headers = {"Authorization": f"Bearer {key}"}
         r = requests.delete(
-            f"{url}/pipelines/delete", headers=headers, json={"id": form_data.id}
-        )
+            f"{url}/pipelines/delete", headers=headers, json={"id": form_data.id}, 
+        timeout=60)
 
         r.raise_for_status()
         data = r.json()
@@ -2418,7 +2418,7 @@ async def get_pipelines(urlIdx: Optional[int] = None, user=Depends(get_admin_use
         key = openai_app.state.config.OPENAI_API_KEYS[urlIdx]
 
         headers = {"Authorization": f"Bearer {key}"}
-        r = requests.get(f"{url}/pipelines", headers=headers)
+        r = requests.get(f"{url}/pipelines", headers=headers, timeout=60)
 
         r.raise_for_status()
         data = r.json()
@@ -2455,7 +2455,7 @@ async def get_pipeline_valves(
         key = openai_app.state.config.OPENAI_API_KEYS[urlIdx]
 
         headers = {"Authorization": f"Bearer {key}"}
-        r = requests.get(f"{url}/{pipeline_id}/valves", headers=headers)
+        r = requests.get(f"{url}/{pipeline_id}/valves", headers=headers, timeout=60)
 
         r.raise_for_status()
         data = r.json()
@@ -2493,7 +2493,7 @@ async def get_pipeline_valves_spec(
         key = openai_app.state.config.OPENAI_API_KEYS[urlIdx]
 
         headers = {"Authorization": f"Bearer {key}"}
-        r = requests.get(f"{url}/{pipeline_id}/valves/spec", headers=headers)
+        r = requests.get(f"{url}/{pipeline_id}/valves/spec", headers=headers, timeout=60)
 
         r.raise_for_status()
         data = r.json()
@@ -2535,7 +2535,7 @@ async def update_pipeline_valves(
             f"{url}/{pipeline_id}/valves/update",
             headers=headers,
             json={**form_data},
-        )
+        timeout=60)
 
         r.raise_for_status()
         data = r.json()

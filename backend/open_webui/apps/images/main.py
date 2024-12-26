@@ -210,7 +210,7 @@ async def verify_url(user=Depends(get_admin_user)):
             r = requests.get(
                 url=f"{app.state.config.AUTOMATIC1111_BASE_URL}/sdapi/v1/options",
                 headers={"authorization": get_automatic1111_api_auth()},
-            )
+            timeout=60)
             r.raise_for_status()
             return True
         except Exception:
@@ -218,7 +218,7 @@ async def verify_url(user=Depends(get_admin_user)):
             raise HTTPException(status_code=400, detail=ERROR_MESSAGES.INVALID_URL)
     elif app.state.config.ENGINE == "comfyui":
         try:
-            r = requests.get(url=f"{app.state.config.COMFYUI_BASE_URL}/object_info")
+            r = requests.get(url=f"{app.state.config.COMFYUI_BASE_URL}/object_info", timeout=60)
             r.raise_for_status()
             return True
         except Exception:
@@ -236,7 +236,7 @@ def set_image_model(model: str):
         r = requests.get(
             url=f"{app.state.config.AUTOMATIC1111_BASE_URL}/sdapi/v1/options",
             headers={"authorization": api_auth},
-        )
+        timeout=60)
         options = r.json()
         if model != options["sd_model_checkpoint"]:
             options["sd_model_checkpoint"] = model
@@ -244,7 +244,7 @@ def set_image_model(model: str):
                 url=f"{app.state.config.AUTOMATIC1111_BASE_URL}/sdapi/v1/options",
                 json=options,
                 headers={"authorization": api_auth},
-            )
+            timeout=60)
     return app.state.config.MODEL
 
 
@@ -258,7 +258,7 @@ def get_image_model():
             r = requests.get(
                 url=f"{app.state.config.AUTOMATIC1111_BASE_URL}/sdapi/v1/options",
                 headers={"authorization": get_automatic1111_api_auth()},
-            )
+            timeout=60)
             options = r.json()
             return options["sd_model_checkpoint"]
         except Exception as e:
@@ -320,7 +320,7 @@ def get_models(user=Depends(get_verified_user)):
             ]
         elif app.state.config.ENGINE == "comfyui":
             # TODO - get models from comfyui
-            r = requests.get(url=f"{app.state.config.COMFYUI_BASE_URL}/object_info")
+            r = requests.get(url=f"{app.state.config.COMFYUI_BASE_URL}/object_info", timeout=60)
             info = r.json()
 
             workflow = json.loads(app.state.config.COMFYUI_WORKFLOW)
@@ -367,7 +367,7 @@ def get_models(user=Depends(get_verified_user)):
             r = requests.get(
                 url=f"{app.state.config.AUTOMATIC1111_BASE_URL}/sdapi/v1/sd-models",
                 headers={"authorization": get_automatic1111_api_auth()},
-            )
+            timeout=60)
             models = r.json()
             return list(
                 map(
@@ -423,7 +423,7 @@ def save_b64_image(b64_str):
 def save_url_image(url):
     image_id = str(uuid.uuid4())
     try:
-        r = requests.get(url)
+        r = requests.get(url, timeout=60)
         r.raise_for_status()
         if r.headers["content-type"].split("/")[0] == "image":
             mime_type = r.headers["content-type"]

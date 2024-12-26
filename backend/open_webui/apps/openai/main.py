@@ -162,7 +162,7 @@ async def speech(request: Request, user=Depends(get_verified_user)):
                 data=body,
                 headers=headers,
                 stream=True,
-            )
+            timeout=60)
 
             r.raise_for_status()
 
