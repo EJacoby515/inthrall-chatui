@@ -21,7 +21,7 @@ def search_tavily(api_key: str, query: str, count: int) -> list[SearchResult]:
     url = "https://api.tavily.com/search"
     data = {"query": query, "api_key": api_key}
 
-    response = requests.post(url, json=data)
+    response = requests.post(url, json=data, timeout=60)
     response.raise_for_status()
 
     json_response = response.json()
