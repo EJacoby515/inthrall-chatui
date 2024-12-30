@@ -2228,67 +2228,71 @@
 			{initNewChat}
 		/>
 
+		<!-- CARDS SECTION -->
+
 		<div
-		class="w-full flex overflow-x-auto whitespace-nowrap gap-4 px-4 py-2 flex-row justify-center items-center mt-40 -mb-40 z-20"
-	>
-		<button
-			class="flex-none rounded-lg text-white hover:opacity-90 shadow-lg transition-all w-40 sm:w-48 h-28 sm:h-32 bg-cover bg-center relative overflow-hidden"
-			style="background-image: url('/assets/images/ar_map.png');"
-			on:click={() => goto('/screens')}
+			class="w-full flex overflow-x-auto whitespace-nowrap gap-4 px-4 py-2 flex-row justify-center items-center mt-16 -mb-16 z-20"
 		>
-			<span class="text-center sm:text-lg font-bold drop-shadow-md">
-				Enter my ThrallDoor
-			</span>
-		</button>
+			<button
+				class="flex-none rounded-lg text-white hover:opacity-90 shadow-lg transition-all w-24 sm:w-30 h-18 sm:h-21 bg-cover bg-center relative overflow-hidden"
+				style="background-image: url('/assets/images/ar_map.png');"
+				on:click={() => goto('/screens')}
+			>
+				<span class="text-center text-sm sm:text-base font-semibold drop-shadow-md">
+					Enter my ThrallDoor
+				</span>
+			</button>
 
-		<button
-			class="flex-none p-6 rounded-lg text-white hover:opacity-90 shadow-lg transition-all w-40 sm:w-48 h-28 sm:h-32 bg-cover bg-center relative overflow-hidden"
-			style="background-image: url('/assets/images/ar_u_hear.jpg');"
-		>
-			<span class="text-base sm:text-lg font-bold drop-shadow-md">Card 2</span>
-		</button>
+			<button
+				class="flex-none p-3 rounded-lg text-white hover:opacity-90 shadow-lg transition-all w-24 sm:w-30 h-18 sm:h-21 bg-cover bg-center relative overflow-hidden"
+				style="background-image: url('/assets/images/ar_u_hear.jpg');"
+			>
+				<span class="text-xs sm:text-sm font-semibold drop-shadow-md">Card 2</span>
+			</button>
 
-		<button
-			class="flex-none p-6 rounded-lg text-white hover:opacity-90 shadow-lg transition-all w-40 sm:w-48 h-28 sm:h-32 bg-cover bg-center relative overflow-hidden"
-			style="background-image: url('/assets/images/ar_helloholo.jpg');"
-		>
-			<span class="text-base sm:text-lg font-bold drop-shadow-md">Card 3</span>
-		</button>
+			<button
+				class="flex-none p-3 rounded-lg text-white hover:opacity-90 shadow-lg transition-all w-24 sm:w-30 h-18 sm:h-21 bg-cover bg-center relative overflow-hidden"
+				style="background-image: url('/assets/images/ar_helloholo.jpg');"
+			>
+				<span class="text-xs sm:text-sm font-semibold drop-shadow-md">Card 3</span>
+			</button>
 
-		<!-- <button
-			class="flex-none p-6 rounded-lg text-white hover:opacity-90 shadow-lg transition-all w-40 sm:w-48 h-28 sm:h-32 bg-cover bg-center relative overflow-hidden"
-			style="background-image: url('../../../../backend/open_webui/static/ar_make_me_holo.jpg');"
-		>
-			<span class="text-base sm:text-lg font-bold drop-shadow-md">Card 4</span>
-		</button> -->
-			<div class="fixed bottom-16 flex flex-wrap justify-center gap-2 px-4 z-10">
-				<button class="px-3 py-1.5 bg-gray-800 rounded-lg text-white hover:bg-gray-700 transition-all text-sm">
-					YouTube Info
-				</button>
-				<button 
-    class="px-3 py-1.5 bg-gray-800/90 rounded-lg text-white hover:bg-gray-700 transition-all text-sm"
-    on:click={() => {
-        const email = 'harry.hart@inthrall.me';
-        const subject = 'ThrallPortal Inquiry';
-        const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}`;
-        document.location.href = mailtoLink;
-    }}
->
-    Contact Me
-</button>
-				<button class="px-3 py-1.5 bg-gray-800 rounded-lg text-white hover:bg-gray-700 transition-all text-sm">
-					ThrallAR
-				</button>
-				<button class="px-3 py-1.5 bg-gray-800 rounded-lg text-white hover:bg-gray-700 transition-all text-sm">
-					Call Me Real-Time
-				</button>
-				<button class="px-3 py-1.5 bg-gray-800 rounded-lg text-white hover:bg-gray-700 transition-all text-sm">
-					Meet My Hologram
-				</button>
-				
-			</div>
+			<button
+				class="flex-none p-3 rounded-lg text-white hover:opacity-90 shadow-lg transition-all w-24 sm:w-30 h-18 sm:h-21 bg-cover bg-center relative overflow-hidden"
+				style="background-image: url('../../../../backend/open_webui/static/ar_make_me_holo.jpg');"
+			>
+				<span class="text-xs sm:text-sm font-semibold drop-shadow-md">Card 4</span>
+			</button>
 		</div>
-		
+
+		<div
+			class="absolute bottom-16 left-0 right-0 flex justify-center items-center gap-4 z-20 px-4"
+		>
+			<button class="px-4 py-2 bg-gray-800 rounded-lg text-white hover:bg-gray-700 transition-all text-sm">
+				YouTube Info
+			</button>
+			<button
+				class="px-4 py-2 bg-gray-800/90 rounded-lg text-white hover:bg-gray-700 transition-all text-sm"
+				on:click={() => {
+					const email = 'harry.hart@inthrall.me';
+					const subject = 'ThrallPortal Inquiry';
+					const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}`;
+					document.location.href = mailtoLink;
+				}}
+			>
+				Contact Me
+			</button>
+			<button class="px-4 py-2 bg-gray-800 rounded-lg text-white hover:bg-gray-700 transition-all text-sm">
+				ThrallAR
+			</button>
+			<button class="px-4 py-2 bg-gray-800 rounded-lg text-white hover:bg-gray-700 transition-all text-sm">
+				Call Me Real-Time
+			</button>
+			<button class="px-4 py-2 bg-gray-800 rounded-lg text-white hover:bg-gray-700 transition-all text-sm">
+				Meet My Hologram
+			</button>
+		</div>
+	
 
 		<PaneGroup direction="horizontal" class="w-full ">
 			<Pane defaultSize={50} class=" flex w-full relative">
