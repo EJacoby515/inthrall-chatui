@@ -7,7 +7,6 @@ import os
 import shutil
 import sys
 import time
-import random
 from contextlib import asynccontextmanager
 from typing import Optional
 
@@ -147,6 +146,7 @@ from open_webui.utils.utils import (
     get_verified_user,
 )
 from open_webui.utils.access_control import has_access
+import secrets
 
 if SAFE_MODE:
     print("SAFE MODE ENABLED")
@@ -1323,14 +1323,14 @@ async def generate_chat_completions(
 
         selected_model_id = None
         if isinstance(model_ids, list) and model_ids:
-            selected_model_id = random.choice(model_ids)
+            selected_model_id = secrets.choice(model_ids)
         else:
             model_ids = [
                 model["id"]
                 for model in await get_all_models()
                 if model.get("owned_by") != "arena"
             ]
-            selected_model_id = random.choice(model_ids)
+            selected_model_id = secrets.choice(model_ids)
 
         form_data["model"] = selected_model_id
 
