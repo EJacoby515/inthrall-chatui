@@ -504,7 +504,7 @@ def transcribe(file_path):
                 headers=headers,
                 files=files,
                 data=data,
-            )
+            timeout=60)
 
             r.raise_for_status()
 
@@ -655,7 +655,7 @@ def get_available_voices() -> dict:
             url = f"https://{region}.tts.speech.microsoft.com/cognitiveservices/voices/list"
             headers = {"Ocp-Apim-Subscription-Key": app.state.config.TTS_API_KEY}
 
-            response = requests.get(url, headers=headers)
+            response = requests.get(url, headers=headers, timeout=60)
             response.raise_for_status()
             voices = response.json()
             for voice in voices:
@@ -683,7 +683,7 @@ def get_elevenlabs_voices() -> dict:
     }
     try:
         # TODO: Add retries
-        response = requests.get("https://api.elevenlabs.io/v1/voices", headers=headers)
+        response = requests.get("https://api.elevenlabs.io/v1/voices", headers=headers, timeout=60)
         response.raise_for_status()
         voices_data = response.json()
 

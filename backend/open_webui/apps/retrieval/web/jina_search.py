@@ -22,7 +22,7 @@ def search_jina(api_key: str, query: str, count: int) -> list[SearchResult]:
     jina_search_endpoint = "https://s.jina.ai/"
     headers = {"Accept": "application/json", "Authorization": f"Bearer {api_key}"}
     url = str(URL(jina_search_endpoint + query))
-    response = requests.get(url, headers=headers)
+    response = requests.get(url, headers=headers, timeout=60)
     response.raise_for_status()
     data = response.json()
 

@@ -97,7 +97,7 @@ class TikaLoader:
             endpoint += "/"
         endpoint += "tika/text"
 
-        r = requests.put(endpoint, data=data, headers=headers)
+        r = requests.put(endpoint, data=data, headers=headers, timeout=60)
 
         if r.ok:
             raw_metadata = r.json()
