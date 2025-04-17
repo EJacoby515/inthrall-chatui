@@ -2,7 +2,6 @@ import asyncio
 import json
 import logging
 import os
-import random
 import re
 import time
 from typing import Optional, Union
@@ -47,6 +46,7 @@ from open_webui.utils.payload import (
 )
 from open_webui.utils.utils import get_admin_user, get_verified_user
 from open_webui.utils.access_control import has_access
+import secrets
 
 log = logging.getLogger(__name__)
 log.setLevel(SRC_LOG_LEVELS["OLLAMA"])
@@ -644,7 +644,7 @@ async def show_model_info(form_data: ModelNameForm, user=Depends(get_verified_us
             detail=ERROR_MESSAGES.MODEL_NOT_FOUND(form_data.name),
         )
 
-    url_idx = random.choice(models[form_data.name]["urls"])
+    url_idx = secrets.choice(models[form_data.name]["urls"])
     url = app.state.config.OLLAMA_BASE_URLS[url_idx]
     log.info(f"url: {url}")
 
@@ -736,7 +736,7 @@ async def generate_ollama_embeddings(
             model = f"{model}:latest"
 
         if model in models:
-            url_idx = random.choice(models[model]["urls"])
+            url_idx = secrets.choice(models[model]["urls"])
         else:
             raise HTTPException(
                 status_code=400,
@@ -806,7 +806,7 @@ async def generate_ollama_batch_embeddings(
             model = f"{model}:latest"
 
         if model in models:
-            url_idx = random.choice(models[model]["urls"])
+            url_idx = secrets.choice(models[model]["urls"])
         else:
             raise HTTPException(
                 status_code=400,
@@ -889,7 +889,7 @@ async def generate_completion(
             model = f"{model}:latest"
 
         if model in models:
-            url_idx = random.choice(models[model]["urls"])
+            url_idx = secrets.choice(models[model]["urls"])
         else:
             raise HTTPException(
                 status_code=400,
@@ -934,7 +934,7 @@ async def get_ollama_url(url_idx: Optional[int], model: str):
                 status_code=400,
                 detail=ERROR_MESSAGES.MODEL_NOT_FOUND(model),
             )
-        url_idx = random.choice(models[model]["urls"])
+        url_idx = secrets.choice(models[model]["urls"])
     url = app.state.config.OLLAMA_BASE_URLS[url_idx]
     return url
 
